@@ -48,13 +48,131 @@
 <hr> 
 
 <article class="post">
+<blockquote>
+<p>整体的作业流程</p>
+</blockquote>
+
+<ol>
+<li>fork到你账户下</li>
+<li>然后进行翻译工作</li>
+<li>完成一定量工作之后，进行本地提交，push到你账户branch中。</li>
+<li>如果需要把你的工作内容合并到symfony brothers的版本中来，创建pull request。</li>
+<li>Symfony Brothers管理员审核你的pull request，如果合格，会负责帮你合并到Symfony Brothers版本中。</li>
+<li>如果阶段性完成翻译工作，譬如完成了Symfony向导教程的翻译工作，Symfony Brothers管理员负责向Symfony官方请求pull request。</li>
+</ol>
+
 <p>本文讲述如何进行线上模式的</p>
 
-<h2>Fork</h2>
+<h2>1. Fork Symfony-docs</h2>
 
-<h2>进行翻译工作</h2>
+<blockquote>
+<p>Fork https://github.com/Symfony-Brothers/symfony-docs</p>
+</blockquote>
 
-<h2>请求工作内容合并</h2>
+<p><a href="https://github.com/Symfony-Brothers/symfony-docs">Symfony-docs on Symfony Brothers</a></p>
+
+<p><img src="/img/fork-symfony-docs.e66e.png" alt="fork symfony-docs"></p>
+
+<p>不要去Symfony官方fork，因为symfony brothers的版本才是我们进行中文翻译的版本。</p>
+
+<h2>2. Clone你的Fork版本</h2>
+
+<blockquote>
+<p>clone master 版本</p>
+</blockquote>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">git clone https://github.com/your-account/symfony-docs.git 
+</code></pre></div>
+<blockquote>
+<p>checkout 翻译版本 branch － 目前我们针对2.6进行翻译</p>
+</blockquote>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">git checkout -b 2.6
+</code></pre></div>
+<blockquote>
+<p>使用Sublime类似的文本编辑工具进行翻译工作</p>
+</blockquote>
+
+<p><img src="/img/sublime-editor.fe2c.png" alt="sublime editor"></p>
+
+<h2>3. 如何进行翻译工作</h2>
+
+<blockquote>
+<p>跟兄弟们提出你准备要翻译单篇内容，之后，此篇内容主要由你开展翻译工作。</p>
+</blockquote>
+
+<p>譬如你选择了 <code>book/index.rst</code> 进行翻译，首先确认有没有其他兄弟在翻译，
+如果有兄弟在翻译了，考虑选择其他翻译的内容。（</p>
+
+<p><code>**目前我们针对book目录下的内容进行翻译。**</code></p>
+
+<blockquote>
+<p>第一稿，进行对照翻译，意思，不要删除原文，在翻译内容的上方进行复制翻译。以主题，段落未基准点，进行对照翻译。
+如果你无法一次性翻译到位，可以考虑先进行大致翻译，然后到完成整篇文章之后，进行梳理、优化和校对。</p>
+</blockquote>
+
+<p>好的翻译，往往需要重复劳动，阅稿、思考、重新组织、修改。</p>
+
+<p><img src="/img/copy-comparing-translation-method.37c7.png" alt="进行对照翻译"></p>
+
+<blockquote>
+<p>当完成对照翻译之后，进行提交</p>
+</blockquote>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">git commit -m &quot;对照翻译完成&quot;
+git push origin 2.6
+</code></pre></div>
+<p><strong>注意，由于文档格式是rst格式，如果不懂此语法，请先学习此语法规则</strong></p>
+
+<blockquote>
+<p>对照翻译完成之后，进行<code>去英留中</code>的优化翻译，此过程尽可能把翻译梳理到位，让语句通顺，内容正确。
+完成之后，进行提交</p>
+</blockquote>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">git commit -m &quot;去英留中翻译完成&quot;
+git push origin 2.6
+</code></pre></div>
+<blockquote>
+<p>接下来，把你翻译完成的内容部分告知其他兄弟，由其他兄弟进行再次查阅，看是否需要做翻译纠正。
+如果大家一致通过，在你fork版本中进行pull request。</p>
+</blockquote>
+
+<h2>4. 如何进行Pull Request</h2>
+
+<p><img src="/img/compare-pull-request.4763.png" alt="比较和pull request"></p>
+
+<ol>
+<li>选择branch版本 2.6(目前翻译版本)</li>
+<li>点击前面的按钮，进行比较，查看没问题后，创建pull request</li>
+</ol>
+
+<blockquote>
+<p>比较，查看有没有问题，如果没有问题，点击 <code>Create pull request</code></p>
+</blockquote>
+
+<p><img src="/img/compare-pull-request-review.993f.png" alt="创建pull request"></p>
+
+<ol>
+<li>base fork : Symfony-Brothers/symfony-docs</li>
+<li>head fork : 此处是你账号下的symfony-docs, 譬如我的 kendoctor/symfony-docs</li>
+<li>branch版本 : 2.6 - 目前针对2.6进行翻译</li>
+</ol>
+
+<blockquote>
+<p>创建 pull request，填写必要内容，提交</p>
+</blockquote>
+
+<p><img src="/img/create-pull-request.cbec.png" alt="创建pull request"></p>
+
+<blockquote>
+<p>此处由我申请pull request，由于我有权限可以Review pull request，所以，下面由 Merge pull Request操作。
+如果你没有，只能等待Symfony Brothers的管理员进行审核和合并处理。</p>
+</blockquote>
+
+<p><img src="/img/verify-pull-request.9ae0.png" alt="查看和审核pull request"></p>
+
+<h2>5. 小结</h2>
+
+<p>到此，单人对单篇内容的翻译工作结束。接下来，你可以继续新的内容翻译。
+等到，阶段性内容翻译完成，譬如book 2.6 branch中的所有内容全部翻译，
+那么Symfony Brothers再向Symfony官方请求pull request。
+如果通过，那么我们的贡献翻译将合并到官方文档中去。</p>
 
 </article>
 
